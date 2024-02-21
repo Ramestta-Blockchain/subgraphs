@@ -1,0 +1,30 @@
+{
+  "name": "rama-root-subgraphs",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint --ext .ts --ext .js --ext .json .eslintrc.js src abis",
+    "lint:fix": "eslint --ext .ts --ext .js --ext .json .eslintrc.js src abis --fix",
+    "graph": "graph",
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "prepare:mainnet": "mustache config/mainnet.json subgraph.template.yaml > subgraph.yaml && mustache config/mainnet.json src/network.template.ts > src/network.ts",
+    "prepare:mumbai": "mustache config/mumbai.json subgraph.template.yaml > subgraph.yaml && mustache config/mumbai.json src/network.template.ts > src/network.ts",
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ Ramestta-Blockchain/mumbai-root-subgraphs",
+    "create-local": "graph create --node http://localhost:8020/ Ramestta-Blockchain/mumbai-root-subgraphs",
+    "remove-local": "graph remove --node http://localhost:8020/ Ramestta-Blockchain/mumbai-root-subgraphs",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 Ramestta-Blockchain/mumbai-root-subgraphs"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-ts": "^0.33.0"
+  },
+  "devDependencies": {
+    "@graphprotocol/graph-cli": "^0.68.1",
+    "@typescript-eslint/eslint-plugin": "^4.10.0",
+    "@typescript-eslint/parser": "^4.10.0",
+    "eslint": "^7.16.0",
+    "eslint-plugin-json": "^2.1.2",
+    "eslint-plugin-unicorn": "^24.0.0",
+    "mustache": "4.0.1",
+    "typescript": "^4.1.3"
+  }
+}

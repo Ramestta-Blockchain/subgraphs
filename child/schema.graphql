@@ -1,0 +1,18 @@
+# Transaction entity includes deposits, transfers and withdrawals of an erc20 token
+type TransactionEntity @entity {
+  id: ID! # unique identifier 
+  token: Bytes!
+  from: Bytes!
+  to: Bytes!
+  value: BigDecimal!
+  type: String! # deposit, transfer or withdrawal
+  block: BigInt!
+  timestamp: BigInt!
+  transaction: Bytes!
+}
+
+type User @entity {
+  id: ID!
+  address: Bytes!
+  amount: BigInt!
+}

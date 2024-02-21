@@ -1,0 +1,274 @@
+type Checkpoint @entity {
+  id: ID!
+  proposer: Bytes!
+  headerBlockId: BigInt!
+  checkpointNumber: BigInt!
+  reward: BigInt!
+  start: BigInt!
+  end: BigInt!
+  root: Bytes!
+  logIndex: String!
+  transactionHash: Bytes!
+  timestamp: BigInt!
+}
+
+type StateSync @entity {
+  id: ID!
+  stateId: BigInt!
+  contract: Bytes!
+  syncType: Int!
+  depositorOrRootToken: String!
+  depositedTokenOrChildToken: String!
+  data: String!
+  rawData: String!
+  logIndex: String!
+  transactionHash: Bytes!
+  timestamp: BigInt!
+  blockNumber: BigInt!
+}
+
+type StateRegistration @entity {
+  id: ID!
+  user: Bytes!
+  receiver: Bytes!
+  sender: Bytes!
+}
+
+# This entity will hold everything regarding
+# plasma exit
+#
+# Not all fields are made compulsory due to the fact,
+# all steps don't happen at a time, rather they will be async ops
+type PlasmaExit @entity {
+  # id always created using `plasma-exit-${exitId}`
+  id: ID!
+  counter: BigInt! # this field can be used to know where the exitStarted transaction happened.
+  exitId: BigInt!
+  exitInitiator: Bytes
+  exitCompleter: Bytes
+  token: Bytes
+  amount: BigInt
+  isRegularExit: Boolean!
+  exited: Int!
+  # exited can take 3 possible values
+  # 0 -> exit started
+  # 1 -> exit cancelled
+  # 2 -> exit completed
+  exitStartedTxHash: Bytes
+  exitStartedTimeStamp: BigInt
+  exitCancelledTxHash: Bytes
+  exitCancelledTimeStamp: BigInt
+  exitCompletedTxHash: Bytes
+  exitCompletedTimeStamp: BigInt
+}
+
+type PredicateRegistration @entity {
+  id: ID!
+  tokenType: Bytes!
+  predicateAddress: Bytes!
+  timestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type TokenMapping @entity {
+  id: ID!
+  rootToken: Bytes!
+  childToken: Bytes!
+  tokenType: String!
+  isPOS: Boolean!
+  timestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type FxTokenMapping @entity {
+  id: ID!
+  counter: BigInt!
+  contractAddress: Bytes!
+  rootToken: Bytes!
+  childToken: Bytes!
+  tokenType: String!
+  timestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type FxTokenMappingCounter @entity {
+  id: ID!
+  current: BigInt!
+}
+
+type FxDeposit @entity {
+  id: ID!
+  counter: BigInt!
+  contractAddress: Bytes!
+  rootToken: Bytes!
+  tokenType: String!
+  depositor: Bytes!
+  userAddress: Bytes!
+  amount: BigInt
+  tokenId: BigInt
+  timestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type FxDepositCounter @entity {
+  id: ID!
+  current: BigInt!
+}
+
+type FxWithdraw @entity {
+  id: ID!
+  counter: BigInt!
+  contractAddress: Bytes!
+  rootToken: Bytes!
+  childToken: Bytes!
+  tokenType: String!
+  userAddress: Bytes!
+  amount: BigInt
+  tokenId: BigInt
+  timestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type FxWithdrawCounter @entity {
+  id: ID!
+  current: BigInt!
+}
+
+type Validator @entity {
+  id: ID!
+  validatorId: BigInt!
+  owner: Bytes!
+  signer: Bytes!
+  signerPubKey: Bytes!
+  liquidatedRewards: BigInt!
+  activationEpoch: BigInt!
+  deactivationEpoch: BigInt!
+  totalStaked: BigInt!
+  selfStake: BigInt!
+  delegatedStake: BigInt!
+  commissionRate: BigInt!
+  nonce: BigInt!
+  # Meaning of status codes
+  #
+  # 0 : Staked
+  # 1 : Unstaked
+  # 2 : Jailed
+  # 3 : Unjailed
+  status: Int!
+  jailEndEpoch: BigInt!
+  auctionAmount: BigInt!
+  isInAuction: Boolean!
+}
+
+type StakeUpdate @entity {
+  id: ID!
+  validatorId: BigInt!
+  totalStaked: BigInt!
+  block: BigInt!
+  nonce: BigInt!
+  transactionHash: Bytes!
+  logIndex: BigInt!
+}
+
+# Keeps track of current delegator counter i.e. how many
+# delegators are present as of now
+type GlobalDelegatorCounter @entity {
+  id: ID!
+  current: BigInt!
+}
+
+# This can be used to get the count of the plasma exits and till where have the process exits been processed.
+type GlobalPlasmaExitCounter @entity {
+  id: ID!
+  current: BigInt!
+}
+
+type Delegator @entity {
+  id: ID!
+  counter: BigInt! # this field can be used for traversing through large number of delegator list
+  validatorId: BigInt!
+  address: Bytes!
+  # total delegated amount
+  delegatedAmount: BigInt!
+  # total unclaimed amount (after sellVoucher and before claiming it)
+  unclaimedAmount: BigInt!
+  # total claimed amount (after withdraw delay, while claiming unstaked amount)
+  claimedAmount: BigInt!
+  # total current shares (works until tokens are non-transferable)
+  tokens: BigInt!
+  claimedRewards: BigInt!
+}
+
+# Heimdall topups
+type Topup @entity {
+  id: ID!
+  address: Bytes!
+  topupAmount: BigInt!
+  withdrawAmount: BigInt!
+}
+
+# Staking Params across all validators
+type StakingParams
+  @queryFields(singular: "stakingParams", plural: "allStakingParams")
+  @entity {
+  id: ID!
+  owner: Bytes
+  validatorThreshold: BigInt!
+  proposerBonus: BigInt!
+  dynasty: BigInt!
+  liquidatedRewards: BigInt!
+}
+
+# Staking NFT's historical ownership
+# can be checked using this entity
+type StakingNFTTransfer @entity {
+  id: ID!
+  tokenId: BigInt!
+  currentOwner: Bytes!
+  previousOwners: [Bytes!]!
+  transactionHashes: [Bytes!]!
+}
+
+type DelegatorUnbond @entity {
+  id: ID!
+  nonce: BigInt!
+  validatorId: BigInt!
+  user: Bytes!
+  amount: BigInt!
+  tokens: BigInt!
+  completed: Boolean!
+  unbondStartedTxHash: Bytes
+  unbondStartedTimeStamp: BigInt
+  unbondClaimedTxHash: Bytes
+  unbondClaimedTimeStamp: BigInt
+  activeStake: BigInt!
+}
+
+type RamaTransfer @entity {
+  id: ID!
+  token: Bytes!
+  from: Bytes!
+  to: Bytes!
+  value: BigInt!
+  block: BigInt!
+  timestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type GlobalDelegationCounter @entity {
+  id: ID!
+  current: BigInt!
+}
+
+type Delegation @entity {
+  id: ID!
+  counter: BigInt! # this field can be used for traversing through large number of delegations list
+  validatorId: BigInt!
+  address: Bytes!
+  timestamp: BigInt!
+  transactionHash: Bytes!
+  # delegated amount in that transaction
+  amount: BigInt!
+  block: BigInt!
+  activeStake: BigInt!
+}
