@@ -16,12 +16,12 @@
   },
   "AutoNAT": {},
   "Bootstrap": [
-    "/dnsaddr/bootstrap.libp2p.io/p2p/QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt",
     "/ip4/104.131.131.82/tcp/4001/p2p/QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ",
     "/ip4/104.131.131.82/udp/4001/quic/p2p/QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ",
     "/dnsaddr/bootstrap.libp2p.io/p2p/QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN",
     "/dnsaddr/bootstrap.libp2p.io/p2p/QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa",
-    "/dnsaddr/bootstrap.libp2p.io/p2p/QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb"
+    "/dnsaddr/bootstrap.libp2p.io/p2p/QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb",
+    "/dnsaddr/bootstrap.libp2p.io/p2p/QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt"
   ],
   "DNS": {
     "Resolvers": {}
@@ -98,8 +98,8 @@
     "Writable": false
   },
   "Identity": {
-    "PeerID": "12D3KooWJgCxRmnTj3GXevDR4kCv8s95tai4o1a5k955iHV9yGfC",
-    "PrivKey": "CAESQCombbPl9JPZt0w91k+8puen+NpbIpYwa4Q9XtQy4wAMg6Iekn3uLW0ACxaL7K+wowhKrmuUqMKG4kChu8/HowM="
+    "PeerID": "12D3KooWCJNx2KfYzP42SeoJgn95MPPvzo8uHgxWsPJAAnGLbfjg",
+    "PrivKey": "CAESQF4LfVuI+ru0l1pmwYXw1Iy7+wwqaUOtGZM2J3ZL/okRJOSE64jlbrbkYIs962EYFEfjzgpg49ClsNiPlPUUhaM="
   },
   "Internal": {},
   "Ipns": {
