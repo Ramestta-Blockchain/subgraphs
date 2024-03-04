@@ -1,0 +1,39 @@
+{
+  "network": "matic",
+  "subgraphId": "QmXhZa2bzqhXCU4bMQunbY1rPeT5aVSVppciojDRikuwo1",
+  "graftingStartBlock": 54246119,
+  "contracts": {
+    "rootChain": {
+      "address": "0x32BC23e5FFf7D567313dB4F41A5125Ad9D9Bca63",
+      "startBlock": 54246119
+    },
+    "stateSender": {
+      "address": "0xE0C9051E655380D1d880b9B0f4b500cEbD09278f",
+      "startBlock": 54246119
+    },
+    "withdrawManager": {
+      "address": "0x6e07F852bAC263492e8C710dB7c0d59275268db8",
+      "startBlock": 54246119
+    },
+    "eventsHub": {
+      "address": "0x9Bc8dfB0e0565553f1464810cb67139Fc1DE87C1",
+      "startBlock": 54246119
+    },
+    "stakingInfo": {
+      "address": "0x06FB27902B00a4CCF3850783dAB763364BF8654A",
+      "startBlock": 54246119
+    },
+    "stakingNft": {
+      "address": "0x108E6890F660Dbe4f3554DC43769B4D734555981",
+      "startBlock": 54246119
+    },
+    "ramaTokenContract": {
+      "address": "0x55a5CC06801bBa4C030568f1A7ee1c753FDcbe36",
+      "startBlock": 54246119
+    },
+    "registry": {
+      "address": "0x07471540b1bfC37192654110189Bdc907e8B9525",
+      "startBlock": 54246119
+    }
+  }
+}
