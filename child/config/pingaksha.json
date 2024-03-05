@@ -1,9 +1,9 @@
 {
-  "network": "mumbai",
+  "network": "Pingaksha",
   "contracts": {
-    "maticToken": {
+    "RamaToken": {
       "address": "0x0000000000000000000000000000000000001010",
-      "startBlock": 1
+      "startBlock": 75
     }
   }
 }

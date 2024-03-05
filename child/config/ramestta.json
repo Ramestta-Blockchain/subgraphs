@@ -1,9 +1,9 @@
 {
-  "network": "matic",
+  "network": "Ramestta",
   "contracts": {
-    "maticToken": {
+    "RamaToken": {
       "address": "0x0000000000000000000000000000000000001010",
-      "startBlock": 23557300
+      "startBlock": 408
     }
   }
 }

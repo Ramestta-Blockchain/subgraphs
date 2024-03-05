@@ -27,7 +27,6 @@ export function handleWithdraw(event: Withdraw): void {
   let transactionEntity = new TransactionEntity(event.transaction.hash.toHex() + '-' + event.logIndex.toString() + '-withdraw')
 
   transactionEntity.from = event.params.from
-  transactionEntity.to = null
   transactionEntity.value = toDecimal(event.params.amount, 18)
   transactionEntity.block = event.block.number
   transactionEntity.timestamp = event.block.timestamp

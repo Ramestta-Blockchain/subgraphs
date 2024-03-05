@@ -9,7 +9,8 @@
     "build": "graph build",
     "prepare:matic": "mustache config/matic.json subgraph.template.yaml > subgraph.yaml && mustache config/matic.json src/network.template.ts > src/network.ts",
     "prepare:mumbai": "mustache config/mumbai.json subgraph.template.yaml > subgraph.yaml && mustache config/mumbai.json src/network.template.ts > src/network.ts",
-    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ Ramestta-Blockchain/mumbai-root-subgraphs",
+    "authenticate": "graph auth --studio <AUTHENTICATE IN CLI>",
+    "deploy": "graph deploy --studio pingaksha-root-subgraph",
     "create-local": "graph create --node http://localhost:8020/ Ramestta-Blockchain/mumbai-root-subgraphs",
     "remove-local": "graph remove --node http://localhost:8020/ Ramestta-Blockchain/mumbai-root-subgraphs",
     "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 Ramestta-Blockchain/mumbai-root-subgraphs"

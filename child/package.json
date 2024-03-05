@@ -1,40 +1,40 @@
 {
-  "name": "matic-child-subgraphs",
+  "name": "Rama-child-subgraphs",
   "version": "1.0.0",
-  "description": "Subgraphs mapping for Graph-node protocol - Matic Network",
+  "description": "Subgraphs mapping for Graph-node protocol - Ramestta Network",
   "scripts": {
     "lint": "eslint --ext .ts --ext .js --ext .json .eslintrc.js src abis",
     "lint:fix": "eslint --ext .ts --ext .js --ext .json .eslintrc.js src abis --fix",
     "graph": "graph",
     "codegen": "graph codegen",
     "build": "graph build",
-    "create": "graph create --node https://mumbai-graph.matic.today/ maticnetwork/token-subgraph",
-    "deploy": "graph deploy --node https://mumbai-graph.matic.today/ --ipfs https://ipfs.infura.io:5001/ maticnetwork/token-subgraph",
-    "prepare:mainnet": "mustache config/mainnet.json subgraph.template.yaml > subgraph.yaml",
-    "prepare:mumbai": "mustache config/mumbai.json subgraph.template.yaml > subgraph.yaml",
-    "create-local": "graph create --node http://localhost:8020/ maticnetwork/mumbai-child-subgraphs",
-    "remove-local": "graph remove --node http://localhost:8020/ maticnetwork/mumbai-child-subgraphs",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs https://ipfs.infura.io:5001 maticnetwork/mumbai-child-subgraphs"
+    "create": "graph create --node https://mumbai-graph.matic.today/ Ramestta-Blockchain/token-subgraph",
+    "deploy": "graph deploy --node https://mumbai-graph.matic.today/ --ipfs https://ipfs.infura.io:5001/ Ramestta-Blockchain/token-subgraph",
+    "prepare:ramestta": "mustache config/ramestta.json subgraph.template.yaml > subgraph.yaml",
+    "prepare:pingaksha": "mustache config/pingaksha.json subgraph.template.yaml > subgraph.yaml",
+    "create-local": "graph create --node http://localhost:8020/ Ramestta-Blockchain/mumbai-child-subgraphs",
+    "remove-local": "graph remove --node http://localhost:8020/ Ramestta-Blockchain/mumbai-child-subgraphs",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs https://ipfs.infura.io:5001 Ramestta-Blockchain/mumbai-child-subgraphs"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/maticnetwork/subgraphs.git"
+    "url": "git+https://github.com/Ramestta-Blockchain/subgraphs.git"
   },
   "keywords": [
     "ethereum",
-    "matic",
-    "mumbai",
+    "ramestta",
+    "pingaksha",
     "token",
     "graphql",
     "graph"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/maticnetwork/subgraphs/issues"
+    "url": "https://github.com/Ramestta-Blockchain/subgraphs/issues"
   },
-  "homepage": "https://github.com/maticnetwork/subgraph#readme",
+  "homepage": "https://github.com/Ramestta-Blockchain/subgraph#readme",
   "devDependencies": {
-    "@graphprotocol/graph-cli": "0.18.0",
+    "@graphprotocol/graph-cli": "^0.68.5",
     "@typescript-eslint/eslint-plugin": "^4.10.0",
     "@typescript-eslint/parser": "^4.10.0",
     "eslint": "^7.16.0",
@@ -44,6 +44,6 @@
     "typescript": "^4.1.3"
   },
   "dependencies": {
-    "@graphprotocol/graph-ts": "0.18.0"
+    "@graphprotocol/graph-ts": "^0.33.0"
   }
 }

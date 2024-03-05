@@ -6,12 +6,12 @@ dataSources:
     name: ChildERC20
     network: {{network}}
     source:
-      address: "{{contracts.maticToken.address}}"
+      address: "{{contracts.RamaToken.address}}"
       abi: ChildERC20
-      startBlock: {{ contracts.maticToken.startBlock }}
+      startBlock: {{ contracts.RamaToken.startBlock }}
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.4
+      apiVersion: 0.0.6
       language: wasm/assemblyscript
       file: ./src/mappings/child-erc20.ts
       entities:

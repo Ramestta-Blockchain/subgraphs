@@ -80,60 +80,6 @@ type TokenMapping @entity {
   transactionHash: Bytes!
 }
 
-type FxTokenMapping @entity {
-  id: ID!
-  counter: BigInt!
-  contractAddress: Bytes!
-  rootToken: Bytes!
-  childToken: Bytes!
-  tokenType: String!
-  timestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type FxTokenMappingCounter @entity {
-  id: ID!
-  current: BigInt!
-}
-
-type FxDeposit @entity {
-  id: ID!
-  counter: BigInt!
-  contractAddress: Bytes!
-  rootToken: Bytes!
-  tokenType: String!
-  depositor: Bytes!
-  userAddress: Bytes!
-  amount: BigInt
-  tokenId: BigInt
-  timestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type FxDepositCounter @entity {
-  id: ID!
-  current: BigInt!
-}
-
-type FxWithdraw @entity {
-  id: ID!
-  counter: BigInt!
-  contractAddress: Bytes!
-  rootToken: Bytes!
-  childToken: Bytes!
-  tokenType: String!
-  userAddress: Bytes!
-  amount: BigInt
-  tokenId: BigInt
-  timestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type FxWithdrawCounter @entity {
-  id: ID!
-  current: BigInt!
-}
-
 type Validator @entity {
   id: ID!
   validatorId: BigInt!

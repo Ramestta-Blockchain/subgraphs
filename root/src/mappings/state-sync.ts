@@ -3,8 +3,8 @@ import { Address } from '@graphprotocol/graph-ts'
 import { StateSynced, NewRegistration, RegistrationUpdated } from '../../generated/StateSender/StateSender'
 import { StateRegistration, StateSync } from '../../generated/schema'
 
-import { decoderForPoSPortalData } from '../network'
-import { Decoder } from '../../generated/StateSender/Decoder'
+// import { decoderForPoSPortalData } from '../network'
+// import { Decoder } from '../../generated/StateSender/Decoder'
 
 export function handleStateSynced(event: StateSynced): void {
   let entity = new StateSync('statesync:' + event.params.id.toString())
@@ -19,10 +19,10 @@ export function handleStateSynced(event: StateSynced): void {
 
   // Attempting to create an instance of `Decoder` smart contract
   // to be used for decoding valid state sync data
-  let decoder = Decoder.bind(Address.fromString(decoderForPoSPortalData))
+  // let decoder = Decoder.bind(Address.fromString(decoderForPoSPortalData))
   // 👇 is being done because there's a possibly decoding might fail
   // if bad input is provided with
-  let callResult = decoder.try_decodeStateSyncData(event.params.data)
+  // let callResult = decoder.try_decodeStateSyncData(event.params.data)
 
   // this condition will be true if during decoding
   // decoder contract faces some issue
@@ -33,31 +33,31 @@ export function handleStateSynced(event: StateSynced): void {
   //
   // but it interested client can always find out what data
   // is by reading `data` field, where it is encoded form
-  if (callResult.reverted) {
+  // if (callResult.reverted) {
 
-    entity.syncType = -1
-    entity.depositorOrRootToken = '0x'
-    entity.depositedTokenOrChildToken = '0x'
-    entity.data = event.params.data.toHexString()
+  //   entity.syncType = -1
+  //   entity.depositorOrRootToken = '0x'
+  //   entity.depositedTokenOrChildToken = '0x'
+  //   entity.data = event.params.data.toHexString()
 
-    // save entity
-    entity.save()
+  //   // save entity
+  //   entity.save()
 
-    return
+  //   return
 
-  }
+  // }
 
-  // Attempting to read decoded data, so that
-  // it can be stored in this entity
-  let decoded = callResult.value
+  // // Attempting to read decoded data, so that
+  // // it can be stored in this entity
+  // let decoded = callResult.value
 
-  entity.syncType = decoded.value0
-  entity.depositorOrRootToken = decoded.value1.toHex()
-  entity.depositedTokenOrChildToken = decoded.value2.toHex()
-  entity.data = decoded.value3.toHexString()
+  // entity.syncType = decoded.value0
+  // entity.depositorOrRootToken = decoded.value1.toHex()
+  // entity.depositedTokenOrChildToken = decoded.value2.toHex()
+  // entity.data = decoded.value3.toHexString()
 
-  // save entity
-  entity.save()
+  // // save entity
+  // entity.save()
 }
 
 export function handleNewRegistration(event: NewRegistration): void {
